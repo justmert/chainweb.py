@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
     name="kadenapy",
     packages=["kadenapy"],
-    version="0.1.1",
+    version="0.1.2",
     license="MIT",
     description="Kadena Chainweb SDK",
     author="Mert Köklü",
     author_email="mert@yuugen.art",
     url="https://github.com/justmert/kadenapy",
-    download_url="https://github.com/justmert/kadenapy/archive/refs/tags/0.1.0.tar.gz",
+    download_url="https://github.com/justmert/kadenapy/archive/refs/tags/0.1.2.tar.gz",
     keywords=["Kadena", "SDK", "Chainweb", "API"],
     install_requires=[
         "requests",
