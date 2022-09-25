@@ -3,6 +3,17 @@ from typing import Union
 
 
 class GenericNodeAPIEndpoint(object):
+    """The generic node API endpoint.
+
+    Args:
+        `scheme` (str): The scheme of the node url.
+        `domain` (str): The domain of the node url.
+        `port` (int): The port of the node url.
+        `api_version` (str): The API version of the node url.
+        `chainweb_version` (str): The Chainweb version of the node url.
+
+    """
+
     def __init__(
         self,
         scheme: str,
@@ -26,6 +37,16 @@ class GenericNodeAPIEndpoint(object):
 
 
 class P2PBootstrapAPIEndpoint(object):
+    """Chainweb P2P bootstrap node. Only P2P API endpoints are served.
+
+    Args:
+        `location` (Union[MainnetNode, TestnetNode]): The location of the node url.
+        `api_version` (str): The API version of the node url.
+
+    Raises:
+        ValueError: If `location` is not one of `MainnetNode`, `TestnetNode`.
+    """
+
     class TestnetNode(Enum):
         """Chainweb testnet P2P bootstrap node list. Only P2P API endpoints are served."""
 
@@ -84,6 +105,12 @@ class P2PBootstrapAPIEndpoint(object):
 
 
 class ServiceAPIEndpoint(object):
+    """Chainweb mainnet or testnet service API. It also serves some endpoints of the P2P API.
+
+    Args:
+        `network` (str): Chainweb network. Must be one of 'testnet' or 'mainnet'. Defaults to 'testnet'.
+    """
+
     def __init__(self, network: str = "testnet"):
         if network.lower() == "testnet":
             self.node_host = "https://api.testnet.chainweb.com"
