@@ -2,7 +2,7 @@ import urllib.parse
 from unittest import TestCase
 import pytest
 from kadenapy.url import P2PBootstrapAPIEndpoint
-from kadenapy.p2p_api.cut_endpoints import CutEndpoints
+from kadenapy.chainweb_p2p.block_hashes_endpoints import BlockHashesEndpoints
 
 # def test_set_api_endpoint():
 

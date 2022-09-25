@@ -532,9 +532,6 @@ class ChainwebP2P():
         if not isinstance(payloadHashes, list):
             raise TypeError("payloadHashes must be a list of strings")
         
-        # elif not p2p_utils._isBase64(payloadHash):
-        #     raise ValueError("payloadHash must be a valid base 64 string")
-
         _payload["chain"] = chain
         _endpoint = self.node.endpoint + f"/chain/{chain}/payload/outputs"
 
