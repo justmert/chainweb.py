@@ -148,6 +148,6 @@ It is also possible to query the transaction outputs along with the payload data
         _data['payloadHashes'] = payloadHashes
         r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
-            raise Exception(f"{r.status_code}")
+            raise Exception(f"Status {r.status_code}: {r.text}")
         
         return r.json()

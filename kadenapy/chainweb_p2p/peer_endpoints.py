@@ -33,9 +33,6 @@ class PeerEndpoints():
             `TypeError`: If limit or next is provided, then must be valid types.
             `ValueError`: If limit or next is provided, then must be valid values.
             `Exception`: If the request fails.
-
-        Returns:
-            dict: Cut-network peer info.
         """                
         _payload = {}
         if limit is not None:
