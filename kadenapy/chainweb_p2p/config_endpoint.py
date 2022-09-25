@@ -5,10 +5,7 @@ from kadenapy.url import GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, Servic
 import json
 from typing import List
 
-class PeerEndpoints():
-    """The P2P communication between chainweb-nodes is sharded into several independent P2P network. The cut network is exchanging consensus state. There is also one mempool P2P network for each chain.
-
-    """
+class ConfigEndpoints():
     def __init__(self, api: Union[GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint]):
         self.node = api
 
@@ -22,41 +19,16 @@ class PeerEndpoints():
         self.node = api
 
 
-    def get_cut_network_peer_info(self, limit: int = None, next: str = None) -> dict:
-        """Get cut-network peer info.
-
-        Args:
-            `limit` (int, optional): Maximum number of records that may be returned. The actual number may be lower. Defaults to None.
-            `next` (str, optional): The cursor for the next page. This value can be found as value of the next property of the previous page. Defaults to None.
+    def get_config(self):
+        """Get the configuration of the node.
 
         Raises:
-            `TypeError`: If limit or next is provided, then must be valid types.
-            `ValueError`: If limit or next is provided, then must be valid values.
             `Exception`: If the request fails.
+        """        
+        _endpoint = self.node.endpoint + f"/config"
 
-        Returns:
-            dict: Cut-network peer info.
-        """                
-        _payload = {}
-        if limit is not None:
-            if not isinstance(limit, int):
-                raise TypeError("limit must be an integer")
-            
-            elif limit < 0:
-                raise ValueError("limit must be greater than 0")
-            
-            _payload["limit"] = limit
-        
-        if next is not None:
-            if not isinstance(next, str):
-                raise TypeError("next must be a string")
-            
-            _payload["next"] = next
-
-        _endpoint = self.node.endpoint + "/cut/peer"
         _headers = {"Content-type": "application/json"}
-        r = requests.get(_endpoint, params=_payload, headers=_headers)
+        r = requests.get(_endpoint, headers=_headers)
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
         return r.json()
-    

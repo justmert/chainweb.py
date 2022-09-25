@@ -144,7 +144,7 @@ Only blocks are returned that are ancestors of the some block in the set of uppe
         if not isinstance(lower, list):
             raise TypeError("lower must be list of strings")
 
-        if not isinstance(upper, str):
+        if not isinstance(upper, list):
             raise TypeError("upper must be list of strings")
 
         _data["lower"] = lower

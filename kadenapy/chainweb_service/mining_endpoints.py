@@ -5,7 +5,7 @@ from kadenapy.url import GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, Servic
 import json
 from typing import List
 
-class MiscellaneousEndpoints():
+class MiningEndpoints():
     """The Mining API of Chainweb node is disabled by default. It can be enabled and configured in the configuration file.
 
 The mining API consists of the following endpoints that are described in detail on the Chainweb mining wiki page.

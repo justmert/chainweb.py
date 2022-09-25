@@ -94,7 +94,7 @@ class MempoolEndpoints():
         
         _endpoint = self.node.endpoint + f"/chain/{chain}/mempool/member"
         _headers = {"Content-type": "application/json"}
-        _data['requestKeys'] = requestKeys
+        _data = requestKeys
         r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
@@ -127,7 +127,7 @@ class MempoolEndpoints():
         
         _endpoint = self.node.endpoint + f"/chain/{chain}/mempool/lookup"
         _headers = {"Content-type": "application/json"}
-        _data['requestKeys'] = requestKeys
+        _data = requestKeys
         r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
@@ -164,7 +164,7 @@ class MempoolEndpoints():
         _endpoint = self.node.endpoint + f"/chain/{chain}/mempool/insert"
 
         _headers = {"Content-type": "application/json"}
-        _data['signedTransactions'] = signedTransactionTexts
+        _data = signedTransactionTexts
         r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")

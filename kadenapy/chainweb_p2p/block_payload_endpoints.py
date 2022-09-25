@@ -81,8 +81,8 @@ It is also possible to query the transaction outputs along with the payload data
         _endpoint = self.node.endpoint + f"/chain/{chain}/payload/batch"
 
         _headers = {"Content-type": "application/json"}
-        _data['payloadHashes'] = payloadHashes
-        r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
+        _data = payloadHashes
+        r = requests.post(_endpoint, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
         
@@ -145,7 +145,7 @@ It is also possible to query the transaction outputs along with the payload data
         _endpoint = self.node.endpoint + f"/chain/{chain}/payload/outputs/batch"
 
         _headers = {"Content-type": "application/json"}
-        _data['payloadHashes'] = payloadHashes
+        _data = payloadHashes
         r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
