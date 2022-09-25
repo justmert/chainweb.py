@@ -1,20 +1,34 @@
-from enum import Enum
 import requests
-from typing import Any, Dict, List, Optional, Tuple, Union
-from kadenapy.url import GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint
+from typing import Union
+from kadenapy.url import (
+    GenericNodeAPIEndpoint,
+    P2PBootstrapAPIEndpoint,
+    ServiceAPIEndpoint,
+)
 import json
 from typing import List
 
-class MiningEndpoints():
+
+class MiningEndpoints:
     """The Mining API of Chainweb node is disabled by default. It can be enabled and configured in the configuration file.
 
-The mining API consists of the following endpoints that are described in detail on the Chainweb mining wiki page.
+    The mining API consists of the following endpoints that are described in detail on the Chainweb mining wiki page.
     """
-    def __init__(self, api: Union[GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint]):
+
+    def __init__(
+        self,
+        api: Union[
+            GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint
+        ],
+    ):
         self.node = api
 
-    
-    def set_node_endpoint(self, api: Union[GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint]):
+    def set_node_endpoint(
+        self,
+        api: Union[
+            GenericNodeAPIEndpoint, P2PBootstrapAPIEndpoint, ServiceAPIEndpoint
+        ],
+    ):
         """Set the node url that serves endpoints.
 
         Args:
@@ -22,13 +36,15 @@ The mining API consists of the following endpoints that are described in detail 
         """
         self.node = api
 
-    def get_mining_work(self, account:str, publicKeys: List[str], predicate: str = "keys-all"):
+    def get_mining_work(
+        self, account: str, publicKeys: List[str], predicate: str = "keys-all"
+    ):
         """Get mining work.
 
         Args:
             `account` (str): The account name.
             `publicKeys` (List[str]): List of Miner public keys.
-            `predicate` (str, optional): The predicate. Can be either "keys-all" or "keys-any". Defaults to "keys-all". 
+            `predicate` (str, optional): The predicate. Can be either "keys-all" or "keys-any". Defaults to "keys-all".
 
         Raises:
             `TypeError`: If account is not a string or publicKeys is not a list or predicate is not a string.
@@ -36,32 +52,33 @@ The mining API consists of the following endpoints that are described in detail 
 
         Returns:
             dict: Mining work.
-        """                
+        """
         _payload = {}
         _data = {}
         if not isinstance(account, str):
             raise TypeError("account must be a string")
-                
+
         if not isinstance(publicKeys, list):
             raise TypeError("publicKeys must be a list of strings")
-        
+
         if not isinstance(predicate, str):
             raise TypeError("predicate must be a string")
-        
+
         elif predicate not in ["keys-all", "keys-any"]:
             raise ValueError("predicate must be either keys-all or keys-any")
-        
+
         _endpoint = self.node.endpoint + f"/mining/work/{account}"
         _headers = {"Content-type": "application/json"}
         _data["account"] = account
-        _data['predicate'] = predicate
-        _data['public-keys'] = publicKeys
-        r = requests.get(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
+        _data["predicate"] = predicate
+        _data["public-keys"] = publicKeys
+        r = requests.get(
+            _endpoint, params=_payload, headers=_headers, data=json.dumps(_data)
+        )
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
-        
-        return r.json()
 
+        return r.json()
 
     def solved_mining_work(self, workHeaderBytes: bytes):
         """Solved mining work.
@@ -78,17 +95,18 @@ The mining API consists of the following endpoints that are described in detail 
         Raises:
             `TypeError`: If workHeaderBytes is not bytes.
             `Exception`: If the request fails.
-        """                
+        """
         _payload = {}
         if not isinstance(workHeaderBytes, bytes):
             raise TypeError("workHeaderBytes must be bytes")
-        
+
         _endpoint = self.node.endpoint + "/mining/solved"
         _headers = {"Content-type": "application/octet-stream"}
         _data = workHeaderBytes
-        r = requests.post(_endpoint, params=_payload, headers=_headers, data=json.dumps(_data))
+        r = requests.post(
+            _endpoint, params=_payload, headers=_headers, data=json.dumps(_data)
+        )
         if r.status_code != 200:
             raise Exception(f"Status {r.status_code}: {r.text}")
-        
-        return r.json()
 
+        return r.json()
