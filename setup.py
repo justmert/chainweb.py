@@ -1,16 +1,16 @@
 from distutils.core import setup
 
 setup(
-    name="kadenapy",
-    packages=["kadenapy"],
-    version="0.1.2",
+    name="chainweb.py",
+    packages=["chainwebpy"],
+    version="0.1.3",
     license="MIT",
-    description="Kadena Chainweb SDK",
+    description="High level Python bindings for the Kadena Chainweb REST API.",
     author="Mert Köklü",
     author_email="mert@yuugen.art",
-    url="https://github.com/justmert/kadenapy",
-    download_url="https://github.com/justmert/kadenapy/archive/refs/tags/0.1.2.tar.gz",
-    keywords=["Kadena", "SDK", "Chainweb", "API"],
+    url="https://github.com/justmert/chainweb.py",
+    download_url="https://github.com/justmert/chainweb.py/archive/refs/tags/0.1.2.tar.gz",
+    keywords=["Kadena", "Rest", "Chainweb", "API"],
     install_requires=[
         "requests",
         "typing",

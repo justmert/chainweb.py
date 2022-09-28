@@ -1,5 +1,5 @@
 from typing import Union
-from kadenapy.url import (
+from chainwebpy.url import (
     GenericNodeAPIEndpoint,
     P2PBootstrapAPIEndpoint,
     ServiceAPIEndpoint,

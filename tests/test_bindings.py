@@ -1,13 +1,14 @@
+# flake8: noqa
 import urllib.parse
 from unittest import TestCase
 import pytest
-from kadenapy.url import P2PBootstrapAPIEndpoint
-from kadenapy.chainweb_p2p.block_hashes_endpoints import BlockHashesEndpoints
+from chainwebpy.url import P2PBootstrapAPIEndpoint
+from chainwebpy.chainweb_p2p.block_hashes_endpoints import BlockHashesEndpoints
 
 
 def test_block_hashes_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.block_hashes_endpoints import (
+    from chainwebpy.url import P2PBootstrapAPIEndpoint
+    from chainwebpy.chainweb_p2p.block_hashes_endpoints import (
         BlockHashesEndpoints,
     )
 
@@ -34,8 +35,7 @@ def test_block_hashes_endpoints():
 
 
 def test_block_header_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.block_header_endpoints import (
+    from chainwebpy.chainweb_p2p.block_header_endpoints import (
         BlockHeaderEndpoints,
     )
 
@@ -63,8 +63,8 @@ def test_block_header_endpoints():
 
 
 def test_block_payload_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.block_payload_endpoints import (
+    from chainwebpy.url import P2PBootstrapAPIEndpoint
+    from chainwebpy.chainweb_p2p.block_payload_endpoints import (
         BlockPayloadEndpoints,
     )
 
@@ -93,8 +93,8 @@ def test_block_payload_endpoints():
 
 
 def test_cut_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.cut_endpoints import CutEndpoints
+    from chainwebpy.url import P2PBootstrapAPIEndpoint
+    from chainwebpy.chainweb_p2p.cut_endpoints import CutEndpoints
 
     p2p_endpoint = P2PBootstrapAPIEndpoint(
         P2PBootstrapAPIEndpoint.TestnetNode.US1
@@ -110,8 +110,8 @@ def test_cut_endpoints():
 
 
 def test_mempool_p2p_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.mempool_endpoints import MempoolEndpoints
+    from chainwebpy.url import P2PBootstrapAPIEndpoint
+    from chainwebpy.chainweb_p2p.mempool_endpoints import MempoolEndpoints
 
     p2p_endpoint = P2PBootstrapAPIEndpoint(
         P2PBootstrapAPIEndpoint.TestnetNode.US1
@@ -134,8 +134,8 @@ def test_mempool_p2p_endpoints():
 
 
 def test_peer_endpoints():
-    from kadenapy.url import P2PBootstrapAPIEndpoint
-    from kadenapy.chainweb_p2p.peer_endpoints import PeerEndpoints
+    from chainwebpy.url import P2PBootstrapAPIEndpoint
+    from chainwebpy.chainweb_p2p.peer_endpoints import PeerEndpoints
 
     p2p_endpoint = P2PBootstrapAPIEndpoint(
         P2PBootstrapAPIEndpoint.TestnetNode.US1
