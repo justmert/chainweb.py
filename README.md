@@ -1,7 +1,7 @@
 # Kadena Chainweb Python Bindings
 
 <div align="center">
-  <img alt="Boards" width="50%" src="media/chainwebpy.png"/>
+  <img alt="Boards" width="40%" src="media/chainwebpy.png"/>
 </div>
 
 
