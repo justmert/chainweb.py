@@ -2,3 +2,5 @@
 .vscode/
 kadenapy.egg-info
 dist/
+setup.py
+setup.cfg
